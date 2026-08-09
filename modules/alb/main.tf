@@ -17,12 +17,12 @@ resource "aws_lb_target_group" "tg_app_lb" {
 resource "aws_lb_target_group_attachment" "test" {
   for_each = toset(var.instances_id)
 
-  target_group_arn = aws_lb_target_group.test.arn
+  target_group_arn = aws_lb_target_group.tg_app_lb.arn
   target_id        = each.value
 }
 
 resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.app_load_balancer
+  load_balancer_arn = aws_lb.app_load_balancer.arn
   port              = 80
   protocol          = "HTTP" 
 

@@ -1,3 +1,3 @@
 output "app_sg_id" {
-  value = module.security_group_app.id
+  value = aws_security_group.this.id
 }

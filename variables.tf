@@ -50,12 +50,4 @@ variable "az_b" {
   default = "us-east-1b"
 }
 
-variable "instances" {
-  type = map(object({
-    ami_id        = string
-    instance_type = string
-    subnet_id     = string
-    security_group_ids = list(string)
-    tags          = map(string)
-  }))
-}
+

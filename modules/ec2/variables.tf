@@ -1,25 +1,3 @@
-variable "ami_id" {
-  type    = string
-}
-
-variable "subnet_id" {
-  type    = string
-}
-
-variable "instance_type" {
-  type    = string
-  default = "t3.micro"
-}
-
-variable "vpc_security_group_ids" {
-  type    = list(string)
-}
-
-variable "tags" {
-  type    = map(string)
-  default = {}
-}
-
 variable "instances" {
   description = "Mapeamento de instâncias EC2"
   type = map(object({
@@ -29,4 +7,18 @@ variable "instances" {
     security_group_ids  = list(string)
     tags                = map(string)
   }))
+}
+
+variable "s3_bucket_arn" {
+  type    = string
+  default = null
+}
+
+variable "ecr_repository_arns" {
+  type    = list(string)
+  default = []
+}
+
+variable "role_name" {
+  type = string
 }
