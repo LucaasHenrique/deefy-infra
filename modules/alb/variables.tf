@@ -25,5 +25,5 @@ variable "vpc_id" {
 }
 
 variable "instances_id" {
-  type = list(string)
+  type = map(string)
 }
