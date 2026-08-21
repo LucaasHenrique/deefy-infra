@@ -228,7 +228,7 @@ module "alb" {
   subnets_ids        = [module.subnets.public_subnet_a_id, module.subnets.public_subnet_b_id]
   vpc_id             = module.vpc.vpc_id
   security_group_ids = [module.security_group_app_alb.app_sg_id]
-  instances_id       = values(module.ec2_instances.ec2_instance_id)
+  instances_id       = module.ec2_instances.ec2_instance_id
   tags = {
     Project = var.project_name
   }
