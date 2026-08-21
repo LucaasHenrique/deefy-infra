@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "tg_app_lb" {
 }
 
 resource "aws_lb_target_group_attachment" "test" {
-  for_each = toset(var.instances_id)
+  for_each = var.instances_id
 
   target_group_arn = aws_lb_target_group.tg_app_lb.arn
   target_id        = each.value
