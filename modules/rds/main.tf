@@ -17,7 +17,7 @@ resource "aws_db_instance" "main" {
   multi_az                = true        
   storage_encrypted       = true
   deletion_protection     = true
-  backup_retention_period = 7
+  backup_retention_period = 1
   skip_final_snapshot     = false
   apply_immediately       = true
   tags = {
