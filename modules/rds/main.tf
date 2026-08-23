@@ -16,9 +16,9 @@ resource "aws_db_instance" "main" {
   password                = var.db_password
   multi_az                = true        
   storage_encrypted       = true
-  deletion_protection     = true
-  backup_retention_period = 1
-  skip_final_snapshot     =true 
+  deletion_protection     = false
+  backup_retention_period = 0
+  skip_final_snapshot     = true 
   apply_immediately       = true
   tags = {
     Name        = "deefy-rds-prod"
