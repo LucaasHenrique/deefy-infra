@@ -7,7 +7,7 @@ resource "aws_db_instance" "main" {
   identifier              = var.identifier
   engine                  = "postgres" 
   instance_class          = var.db_instance_class
-  allocated_storage       = 10
+  allocated_storage       = 20
   storage_type            = "gp3"
   db_subnet_group_name    = aws_db_subnet_group.this.name
   vpc_security_group_ids  = var.security_group_ids 
