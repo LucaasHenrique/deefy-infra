@@ -18,7 +18,7 @@ resource "aws_db_instance" "main" {
   storage_encrypted       = true
   deletion_protection     = true
   backup_retention_period = 1
-  skip_final_snapshot     =true; 
+  skip_final_snapshot     =true 
   apply_immediately       = true
   tags = {
     Name        = "deefy-rds-prod"
