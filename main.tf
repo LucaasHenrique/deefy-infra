@@ -170,10 +170,10 @@ locals {
       instance_type      = "t3.micro"
       subnet_id          = module.subnets.private_subnet_a_id
       security_group_ids = [module.security_group_app.app_sg_id]
+
       tags = {
         Name        = "deefy-prod-1"
         Environment = "production"
-        Purpose     = "app-server-prod"
       }
     }
     prod-2 = {
@@ -181,32 +181,34 @@ locals {
       instance_type      = "t3.micro"
       subnet_id          = module.subnets.private_subnet_b_id
       security_group_ids = [module.security_group_app.app_sg_id]
+
       tags = {
         Name        = "deefy-prod-2"
         Environment = "production"
-        Purpose     = "app-server-prod"
       }
     }
+
     prod-3 = {
       ami_id             = "ami-0bdc7d025135d7b49"
       instance_type      = "t3.micro"
       subnet_id          = module.subnets.private_subnet_a_id
       security_group_ids = [module.security_group_app.app_sg_id]
+
       tags = {
         Name        = "deefy-prod-3"
         Environment = "production"
-        Purpose     = "app-server-prod"
       }
     }
+
     test-1 = {
       ami_id             = "ami-0bdc7d025135d7b49"
       instance_type      = "t3.micro"
       subnet_id          = module.subnets.private_subnet_b_id
       security_group_ids = [module.security_group_app.app_sg_id]
+
       tags = {
         Name        = "deefy-test-1"
         Environment = "test"
-        Purpose     = "app-server-test"
       }
     }
   }
