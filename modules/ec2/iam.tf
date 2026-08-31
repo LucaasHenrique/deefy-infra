@@ -1,6 +1,7 @@
 data "aws_iam_policy_document" "assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
+
     principals {
       type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
@@ -19,27 +20,48 @@ resource "aws_iam_role_policy" "s3_ecr" {
 
   policy = jsonencode({
     Version = "2012-10-17"
+
     Statement = [
       {
-        Effect   = "Allow"
-        Action   = ["s3:GetObject", "s3:ListBucket"]
+        Effect = "Allow"
+
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ]
+
         Resource = [
           var.s3_bucket_arn,
           "${var.s3_bucket_arn}/*"
         ]
       },
       {
-        Effect   = "Allow"
-        Action   = ["ecr:GetAuthorizationToken"]
+        Effect = "Allow"
+
+        Action = [
+          "ecr:GetAuthorizationToken"
+        ]
+
         Resource = "*"
       },
       {
-        Effect   = "Allow"
-        Action   = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"]
+        Effect = "Allow"
+
+        Action = [
+          "ecr:BatchGetImage",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchCheckLayerAvailability"
+        ]
+
         Resource = var.ecr_repository_arns
       }
     ]
   })
+}
+
+resource "aws_iam_role_policy_attachment" "ssm" {
+  role       = aws_iam_role.ec2.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 resource "aws_iam_instance_profile" "ec2" {
